@@ -11,18 +11,18 @@ import java.net.URI;
 public class WeatherApiCall {
 
     public String getWeather(String city) {
-        return this.getWeather(city, "weather");
+        return this.callRemoteService(city, "weather");
     }
 
     public String getHumidity(String city) {
-        return this.getWeather(city, "humidity");
+        return this.callRemoteService(city, "humidity");
     }
 
     public String getWind(String city) {
-        return this.getWeather(city, "wind");
+        return this.callRemoteService(city, "wind");
     }
 
-    public String getWeather(String city, String dataType)
+    public String callRemoteService(String city, String dataType)
     {
         String urlString = "http://api.openweathermap.org/data/2.5/weather?appid=c15e2598880e57fad011a64061948fac&units=metric&q=" + city;
 
