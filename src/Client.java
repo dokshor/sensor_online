@@ -18,16 +18,16 @@ public class Client
         try(com.zeroc.Ice.Communicator communicator = com.zeroc.Ice.Util.initialize(args))
         {
             com.zeroc.Ice.ObjectPrx base = communicator.stringToProxy("Sensor:default -p 10000");
-            Ufro.SensorPrx printer = Ufro.SensorPrx.checkedCast(base);
-            if(printer == null)
+            Ufro.SensorPrx weatherClient = Ufro.SensorPrx.checkedCast(base);
+            if(weatherClient == null)
             {
                 throw new Error("Proxy remoto invalido");
             }
 
-            System.out.println("[+] Solicitando información requerida");
-            System.out.println("[+] Solicitando temperatura para " + city + " " + printer.getTemperature(city));
-            System.out.println("[+] Solicitando Humedad para " + city + " " + printer.getHumidity(city));
-            System.out.println("[+] Solicitando Velocidad del Viento para " + city + " " + printer.getWindSpeed(city));
+            System.out.println("[+] Solicitando información requerida para la ciudad de " + city);
+            System.out.println("[+] Solicitando temperatura para " + city + " " + weatherClient.getTemperature(city));
+            System.out.println("[+] Solicitando Humedad para " + city + " " + weatherClient.getHumidity(city));
+            System.out.println("[+] Solicitando Velocidad del Viento para " + city + " " + weatherClient.getWindSpeed(city));
         }
     }
 }
